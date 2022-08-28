@@ -13,6 +13,7 @@
 		EAD2647928B8046F0066F0D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD2647728B8046F0066F0D0 /* Main.storyboard */; };
 		EAD2647B28B804700066F0D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD2647A28B804700066F0D0 /* Assets.xcassets */; };
 		EAD2647E28B804700066F0D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD2647C28B804700066F0D0 /* LaunchScreen.storyboard */; };
+		EAD2648628BBD49A0066F0D0 /* AuthorizationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2648528BBD49A0066F0D0 /* AuthorizationPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EAD2647A28B804700066F0D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD2647D28B804700066F0D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAD2647F28B804700066F0D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD2648528BBD49A0066F0D0 /* AuthorizationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				EAD2647128B8046F0066F0D0 /* AppDelegate.swift */,
 				EAD2647328B8046F0066F0D0 /* SceneDelegate.swift */,
 				EAD2647528B8046F0066F0D0 /* ViewController.swift */,
+				EAD2648528BBD49A0066F0D0 /* AuthorizationPage.swift */,
 				EAD2647728B8046F0066F0D0 /* Main.storyboard */,
 				EAD2647A28B804700066F0D0 /* Assets.xcassets */,
 				EAD2647C28B804700066F0D0 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD2648628BBD49A0066F0D0 /* AuthorizationPage.swift in Sources */,
 				EAD2647628B8046F0066F0D0 /* ViewController.swift in Sources */,
 				EAD2647228B8046F0066F0D0 /* AppDelegate.swift in Sources */,
 				EAD2647428B8046F0066F0D0 /* SceneDelegate.swift in Sources */,
