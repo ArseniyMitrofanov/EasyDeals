@@ -199,6 +199,7 @@
 				EAD2648628BBD49A0066F0D0 /* AuthorizationPageViewController.swift in Sources */,
 				EAD2647228B8046F0066F0D0 /* AppDelegate.swift in Sources */,
 				EAD2647428B8046F0066F0D0 /* SceneDelegate.swift in Sources */,
+				EAD2653228C5E9090066F0D0 /* SignInPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
