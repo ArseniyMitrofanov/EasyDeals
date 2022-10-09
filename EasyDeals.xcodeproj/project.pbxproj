@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7217E27128F306FE007933F5 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7217E27028F306FE007933F5 /* HomePageViewController.swift */; };
+		7217E29528F31C88007933F5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7217E29428F31C88007933F5 /* MenuViewController.swift */; };
+		9C2FDF687B560223B31579A5 /* libPods-EasyDeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15817A416918AAE75875692E /* libPods-EasyDeals.a */; };
 		EAD2647228B8046F0066F0D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2647128B8046F0066F0D0 /* AppDelegate.swift */; };
 		EAD2647428B8046F0066F0D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2647328B8046F0066F0D0 /* SceneDelegate.swift */; };
-		EAD2647628B8046F0066F0D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2647528B8046F0066F0D0 /* ViewController.swift */; };
 		EAD2647928B8046F0066F0D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD2647728B8046F0066F0D0 /* Main.storyboard */; };
 		EAD2647B28B804700066F0D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD2647A28B804700066F0D0 /* Assets.xcassets */; };
 		EAD2647E28B804700066F0D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD2647C28B804700066F0D0 /* LaunchScreen.storyboard */; };
-		EAD2648628BBD49A0066F0D0 /* AuthorizationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2648528BBD49A0066F0D0 /* AuthorizationPage.swift */; };
+		EAD2648628BBD49A0066F0D0 /* AuthorizationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2648528BBD49A0066F0D0 /* AuthorizationPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15817A416918AAE75875692E /* libPods-EasyDeals.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyDeals.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7217E27028F306FE007933F5 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		7217E29428F31C88007933F5 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		8C11D8D8F27CB8BC20D2C3CD /* Pods-EasyDeals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyDeals.debug.xcconfig"; path = "Target Support Files/Pods-EasyDeals/Pods-EasyDeals.debug.xcconfig"; sourceTree = "<group>"; };
 		EAD2646E28B8046F0066F0D0 /* EasyDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD2647128B8046F0066F0D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAD2647328B8046F0066F0D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EAD2647528B8046F0066F0D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EAD2647828B8046F0066F0D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAD2647A28B804700066F0D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD2647D28B804700066F0D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAD2647F28B804700066F0D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EAD2648528BBD49A0066F0D0 /* AuthorizationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPage.swift; sourceTree = "<group>"; };
+		EAD2648528BBD49A0066F0D0 /* AuthorizationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPageViewController.swift; sourceTree = "<group>"; };
+		ED61E286B1AC1AA7C9F6C584 /* Pods-EasyDeals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyDeals.release.xcconfig"; path = "Target Support Files/Pods-EasyDeals/Pods-EasyDeals.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C2FDF687B560223B31579A5 /* libPods-EasyDeals.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60C61A518A69EF2687B2F8C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C11D8D8F27CB8BC20D2C3CD /* Pods-EasyDeals.debug.xcconfig */,
+				ED61E286B1AC1AA7C9F6C584 /* Pods-EasyDeals.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A93CFAE5D07F4D39BF2890D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15817A416918AAE75875692E /* libPods-EasyDeals.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EAD2646528B8046F0066F0D0 = {
 			isa = PBXGroup;
 			children = (
 				EAD2647028B8046F0066F0D0 /* EasyDeals */,
 				EAD2646F28B8046F0066F0D0 /* Products */,
+				60C61A518A69EF2687B2F8C5 /* Pods */,
+				A93CFAE5D07F4D39BF2890D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +86,9 @@
 			children = (
 				EAD2647128B8046F0066F0D0 /* AppDelegate.swift */,
 				EAD2647328B8046F0066F0D0 /* SceneDelegate.swift */,
-				EAD2647528B8046F0066F0D0 /* ViewController.swift */,
-				EAD2648528BBD49A0066F0D0 /* AuthorizationPage.swift */,
+				EAD2648528BBD49A0066F0D0 /* AuthorizationPageViewController.swift */,
+				7217E27028F306FE007933F5 /* HomePageViewController.swift */,
+				7217E29428F31C88007933F5 /* MenuViewController.swift */,
 				EAD2647728B8046F0066F0D0 /* Main.storyboard */,
 				EAD2647A28B804700066F0D0 /* Assets.xcassets */,
 				EAD2647C28B804700066F0D0 /* LaunchScreen.storyboard */,
@@ -77,6 +104,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAD2648228B804700066F0D0 /* Build configuration list for PBXNativeTarget "EasyDeals" */;
 			buildPhases = (
+				C9EAA0CF123105E41441DFEB /* [CP] Check Pods Manifest.lock */,
 				EAD2646A28B8046F0066F0D0 /* Sources */,
 				EAD2646B28B8046F0066F0D0 /* Frameworks */,
 				EAD2646C28B8046F0066F0D0 /* Resources */,
@@ -136,13 +164,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C9EAA0CF123105E41441DFEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyDeals-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EAD2646A28B8046F0066F0D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD2648628BBD49A0066F0D0 /* AuthorizationPage.swift in Sources */,
-				EAD2647628B8046F0066F0D0 /* ViewController.swift in Sources */,
+				7217E27128F306FE007933F5 /* HomePageViewController.swift in Sources */,
+				7217E29528F31C88007933F5 /* MenuViewController.swift in Sources */,
+				EAD2648628BBD49A0066F0D0 /* AuthorizationPageViewController.swift in Sources */,
 				EAD2647228B8046F0066F0D0 /* AppDelegate.swift in Sources */,
 				EAD2647428B8046F0066F0D0 /* SceneDelegate.swift in Sources */,
 			);
@@ -286,6 +340,7 @@
 		};
 		EAD2648328B804700066F0D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C11D8D8F27CB8BC20D2C3CD /* Pods-EasyDeals.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -313,6 +368,7 @@
 		};
 		EAD2648428B804700066F0D0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED61E286B1AC1AA7C9F6C584 /* Pods-EasyDeals.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

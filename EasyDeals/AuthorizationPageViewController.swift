@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthorizationPage: UIViewController {
+class AuthorizationPageViewController: UIViewController {
 
     let verticalStackView = UIStackView()
     let userImage = UIImageView(image: UIImage(named: "userImage"))
@@ -16,7 +16,6 @@ class AuthorizationPage: UIViewController {
     let buttonSignIn = UIButton()
     let buttonForgotPassword = UIButton()
     let buttonCreateAccount = UIButton()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,6 @@ class AuthorizationPage: UIViewController {
         verticalStackView.addArrangedSubview(userImage)
         userImage.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.addArrangedSubview(txtFieldPhoneNumber)
-//        txtFieldPhoneNumber.translatesAutoresizingMaskIntoConstraints = false
         txtFieldPhoneNumber.borderStyle = .roundedRect
         txtFieldPhoneNumber.placeholder = "Номер телефона:"
         verticalStackView.addArrangedSubview(txtFieldPassword)
@@ -47,14 +45,8 @@ class AuthorizationPage: UIViewController {
         verticalStackView.addArrangedSubview(buttonCreateAccount)
         buttonCreateAccount.setTitle("Создать аккаунт", for: .normal)
         buttonCreateAccount.setTitleColor(.black, for: .normal)
-        
-        
-     
-        
-        
-        
+
         NSLayoutConstraint.activate([
-            
             verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             verticalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -65,8 +57,15 @@ class AuthorizationPage: UIViewController {
             buttonSignIn.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             buttonForgotPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             buttonCreateAccount.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
-            
         ])
+        buttonSignIn.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
     }
-
+    @objc func signInButtonTapped(_ button: UIButton) {
+        if button == button {
+            let vc = HomePageViewController()
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.modalPresentationStyle = .fullScreen
+            present(navVC, animated: true)
+        }
+    }
 }
