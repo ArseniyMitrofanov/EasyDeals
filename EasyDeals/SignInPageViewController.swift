@@ -8,39 +8,66 @@
 import UIKit
 
 class SignInPageViewController: UIViewController {
-    let verticalStackView = UIStackView()
-    let userImage = UIImageView(image: UIImage(named: "userImage"))
-    let txtFieldPhoneNumber = UITextField()
-    let txtFieldPassword = UITextField()
-    let txtFieldRepeatPassword = UITextField()
-    let buttonShowHomePageVC = UIButton()
+    
+    let verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = 15
+        return stackView
+    }()
+    let userImage: UIImageView = {
+        let imageView  = UIImageView(image: UIImage(named: "userImage"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    let txtFieldPhoneNumber: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Номер телефона:"
+        return textField
+    }()
+    let txtFieldPassword: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Пароль:"
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    let txtFieldRepeatPassword: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Подтвердите пароль:"
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    lazy var buttonShowHomePageVC: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 10
+        button.setTitle("Войти", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(verticalStackView)
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fill
-        verticalStackView.alignment = .center
-        verticalStackView.spacing = 15
+        addSubviews()
+        makeConstraints()
+    }
+    
+    func addSubviews() {
         verticalStackView.addArrangedSubview(userImage)
-        userImage.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.addArrangedSubview(txtFieldPhoneNumber)
-        txtFieldPhoneNumber.borderStyle = .roundedRect
-        txtFieldPhoneNumber.placeholder = "Номер телефона:"
         verticalStackView.addArrangedSubview(txtFieldPassword)
-        txtFieldPassword.borderStyle = .roundedRect
-        txtFieldPassword.placeholder = "Пароль:"
-        txtFieldPassword.isSecureTextEntry = true
         verticalStackView.addArrangedSubview(txtFieldRepeatPassword)
-        txtFieldRepeatPassword.borderStyle = .roundedRect
-        txtFieldRepeatPassword.placeholder = "Подтвердите пароль:"
-        txtFieldRepeatPassword.isSecureTextEntry = true
         verticalStackView.addArrangedSubview(buttonShowHomePageVC)
-        buttonShowHomePageVC.backgroundColor = .black
-        buttonShowHomePageVC.layer.cornerRadius = 10
-        buttonShowHomePageVC.setTitle("Войти", for: .normal)
-        buttonShowHomePageVC.setTitleColor(.white, for: .normal)
-
+        self.view.addSubview(verticalStackView)
+    }
+    func makeConstraints() {
         NSLayoutConstraint.activate([
             verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
@@ -51,9 +78,7 @@ class SignInPageViewController: UIViewController {
             txtFieldPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             txtFieldRepeatPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             buttonShowHomePageVC.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
-           
         ])
-        buttonShowHomePageVC.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
     }
     @objc func showHomePageVC(_ button: UIButton) {
         if button == button {
@@ -63,6 +88,4 @@ class SignInPageViewController: UIViewController {
             present(navVC, animated: true)
         }
     }
-    
-
 }

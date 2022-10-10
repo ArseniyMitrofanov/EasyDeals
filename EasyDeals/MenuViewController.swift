@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MenuViewControllerDelegate: AnyObject {
+    func didSelect(menuItem: MenuViewController.MenuOptions)
+}
+
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    weak var delegate: MenuViewControllerDelegate?
     enum MenuOptions: String, CaseIterable {
         case profile = "Профиль"
         case info = "Информация"
@@ -47,6 +53,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = CGRect(
@@ -59,7 +66,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         MenuOptions.allCases.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = MenuOptions.allCases[indexPath.row].rawValue
@@ -71,7 +77,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let item = MenuOptions.allCases[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        let item = MenuOptions.allCases[indexPath.row]
+        delegate?.didSelect(menuItem: item)
     }
 }

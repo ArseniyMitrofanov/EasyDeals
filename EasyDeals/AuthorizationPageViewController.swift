@@ -9,43 +9,72 @@ import UIKit
 
 class AuthorizationPageViewController: UIViewController {
 
-    let verticalStackView = UIStackView()
-    let userImage = UIImageView(image: UIImage(named: "userImage"))
-    let txtFieldPhoneNumber = UITextField()
-    let txtFieldPassword = UITextField()
-    let buttonShowHomePageVC = UIButton()
-    let buttonForgotPassword = UIButton()
-    let buttonShowSignInPageVC = UIButton()
+    let verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = 15
+        return stackView
+    }()
+    let userImage: UIImageView = {
+        let imageView  = UIImageView(image: UIImage(named: "userImage"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    let txtFieldPhoneNumber: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Номер телефона:"
+        return textField
+    }()
+    let txtFieldPassword: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Пароль:"
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    let buttonShowSignInPageVC: UIButton = {
+        let button = UIButton()
+        button.setTitle("Создать аккаунт", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+    lazy var buttonShowHomePageVC: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 10
+        button.setTitle("Войти", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
+        return button
+    }()
+    lazy var buttonForgotPassword: UIButton = {
+        let button = UIButton()
+        button.setTitle("Забыли пароль?", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(showSignInPageVC), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(verticalStackView)
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fill
-        verticalStackView.alignment = .center
-        verticalStackView.spacing = 15
+        addSubviews()
+        makeConstraints()
+    }
+    
+    func addSubviews() {
         verticalStackView.addArrangedSubview(userImage)
-        userImage.translatesAutoresizingMaskIntoConstraints = false
         verticalStackView.addArrangedSubview(txtFieldPhoneNumber)
-        txtFieldPhoneNumber.borderStyle = .roundedRect
-        txtFieldPhoneNumber.placeholder = "Номер телефона:"
         verticalStackView.addArrangedSubview(txtFieldPassword)
-        txtFieldPassword.borderStyle = .roundedRect
-        txtFieldPassword.placeholder = "Пароль:"
-        txtFieldPassword.isSecureTextEntry = true
         verticalStackView.addArrangedSubview(buttonShowHomePageVC)
-        buttonShowHomePageVC.backgroundColor = .black
-        buttonShowHomePageVC.layer.cornerRadius = 10
-        buttonShowHomePageVC.setTitle("Войти", for: .normal)
-        buttonShowHomePageVC.setTitleColor(.white, for: .normal)
         verticalStackView.addArrangedSubview(buttonForgotPassword)
-        buttonForgotPassword.setTitle("Забыли пароль?", for: .normal)
-        buttonForgotPassword.setTitleColor(.black, for: .normal)
         verticalStackView.addArrangedSubview(buttonShowSignInPageVC)
-        buttonShowSignInPageVC.setTitle("Создать аккаунт", for: .normal)
-        buttonShowSignInPageVC.setTitleColor(.black, for: .normal)
-
+        self.view.addSubview(verticalStackView)
+    }
+    func makeConstraints() {
         NSLayoutConstraint.activate([
             verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             verticalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
@@ -58,8 +87,6 @@ class AuthorizationPageViewController: UIViewController {
             buttonForgotPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             buttonShowSignInPageVC.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
         ])
-        buttonShowHomePageVC.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
-        buttonShowSignInPageVC.addTarget(self, action: #selector(showSignInPageVC), for: .touchUpInside)
     }
     @objc func showHomePageVC(_ button: UIButton) {
         if button == button {
@@ -72,10 +99,10 @@ class AuthorizationPageViewController: UIViewController {
     @objc func showSignInPageVC(_ button: UIButton) {
         if button == button {
             let vc = SignInPageViewController()
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalPresentationStyle = .fullScreen
-            present(navVC, animated: false)
+            vc.view.backgroundColor = .systemBackground
+            let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
+            navigationItem.backBarButtonItem = backBarButtonItem
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }
