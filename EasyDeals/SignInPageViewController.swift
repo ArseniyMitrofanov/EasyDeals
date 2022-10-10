@@ -1,22 +1,19 @@
 //
-//  AuthorizationPage.swift
+//  SignInPageViewController.swift
 //  EasyDeals
 //
-//  Created by Арсений on 28.08.22.
+//  Created by Арсений on 10.10.22.
 //
 
 import UIKit
 
-class AuthorizationPageViewController: UIViewController {
-
+class SignInPageViewController: UIViewController {
     let verticalStackView = UIStackView()
     let userImage = UIImageView(image: UIImage(named: "userImage"))
     let txtFieldPhoneNumber = UITextField()
     let txtFieldPassword = UITextField()
+    let txtFieldRepeatPassword = UITextField()
     let buttonShowHomePageVC = UIButton()
-    let buttonForgotPassword = UIButton()
-    let buttonShowSignInPageVC = UIButton()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(verticalStackView)
@@ -34,17 +31,15 @@ class AuthorizationPageViewController: UIViewController {
         txtFieldPassword.borderStyle = .roundedRect
         txtFieldPassword.placeholder = "Пароль:"
         txtFieldPassword.isSecureTextEntry = true
+        verticalStackView.addArrangedSubview(txtFieldRepeatPassword)
+        txtFieldRepeatPassword.borderStyle = .roundedRect
+        txtFieldRepeatPassword.placeholder = "Подтвердите пароль:"
+        txtFieldRepeatPassword.isSecureTextEntry = true
         verticalStackView.addArrangedSubview(buttonShowHomePageVC)
         buttonShowHomePageVC.backgroundColor = .black
         buttonShowHomePageVC.layer.cornerRadius = 10
         buttonShowHomePageVC.setTitle("Войти", for: .normal)
         buttonShowHomePageVC.setTitleColor(.white, for: .normal)
-        verticalStackView.addArrangedSubview(buttonForgotPassword)
-        buttonForgotPassword.setTitle("Забыли пароль?", for: .normal)
-        buttonForgotPassword.setTitleColor(.black, for: .normal)
-        verticalStackView.addArrangedSubview(buttonShowSignInPageVC)
-        buttonShowSignInPageVC.setTitle("Создать аккаунт", for: .normal)
-        buttonShowSignInPageVC.setTitleColor(.black, for: .normal)
 
         NSLayoutConstraint.activate([
             verticalStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
@@ -54,12 +49,11 @@ class AuthorizationPageViewController: UIViewController {
             userImage.widthAnchor.constraint(equalToConstant: 150),
             txtFieldPhoneNumber.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             txtFieldPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            txtFieldRepeatPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             buttonShowHomePageVC.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
-            buttonForgotPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
-            buttonShowSignInPageVC.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor)
+           
         ])
         buttonShowHomePageVC.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
-        buttonShowSignInPageVC.addTarget(self, action: #selector(showSignInPageVC), for: .touchUpInside)
     }
     @objc func showHomePageVC(_ button: UIButton) {
         if button == button {
@@ -69,13 +63,6 @@ class AuthorizationPageViewController: UIViewController {
             present(navVC, animated: true)
         }
     }
-    @objc func showSignInPageVC(_ button: UIButton) {
-        if button == button {
-            let vc = SignInPageViewController()
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalPresentationStyle = .fullScreen
-            present(navVC, animated: false)
-        }
-    }
     
+
 }
