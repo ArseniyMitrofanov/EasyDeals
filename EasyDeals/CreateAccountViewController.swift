@@ -1,13 +1,16 @@
 //
-//  SignInPageViewController.swift
+//  CreateAccountViewController.swift
 //  EasyDeals
 //
-//  Created by Арсений on 10.10.22.
+//  Created by Вадим Сайко on 11.10.22.
 //
 
 import UIKit
+import KeychainSwift
 
-class SignInPageViewController: UIViewController {
+class CreateAccountViewController: UIViewController, UITextFieldDelegate {
+    
+    let keyChain = KeychainSwift()
     
     let verticalStackView: UIStackView = {
         let stackView = UIStackView()
@@ -50,6 +53,7 @@ class SignInPageViewController: UIViewController {
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
         return button
     }()
     
@@ -57,6 +61,9 @@ class SignInPageViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         makeConstraints()
+        txtFieldPhoneNumber.delegate = self
+        txtFieldPassword.delegate = self
+        txtFieldRepeatPassword.delegate = self
     }
     
     func addSubviews() {
@@ -82,10 +89,46 @@ class SignInPageViewController: UIViewController {
     }
     @objc func showHomePageVC(_ button: UIButton) {
         if button == button {
+            let loginInfo = LoginInformation(phoneNumber: txtFieldPhoneNumber.text ?? "", password: txtFieldPassword.text ?? "")
+            keyChain.set(loginInfo.phoneNumber, forKey: "phoneNumber")
+            keyChain.set(loginInfo.password, forKey: "password")
             let vc = HomePageViewController()
             let navVC = UINavigationController(rootViewController: vc)
             navVC.modalPresentationStyle = .fullScreen
             present(navVC, animated: true)
         }
     }
+    func validateFields() -> String? {
+        let cleanedPassword = txtFieldPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if (txtFieldPhoneNumber.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0) < 2 ||
+            (txtFieldPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0) < 2 {
+            return "Length of your phone number or password is not enough"
+        }
+        
+//        if isPasswordValid(cleanedPassword) == false {
+//            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+//        }
+        
+        if txtFieldPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) !=
+            txtFieldRepeatPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            return "Your passwords are different"
+        }
+        return nil
+    }
+    
+//    func isPasswordValid(_ password : String) -> Bool {
+//        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+//        return passwordTest.evaluate(with: password)
+//    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if validateFields() == nil {
+            buttonShowHomePageVC.isUserInteractionEnabled = true
+        }
+    }
+}
+
+struct LoginInformation: Codable {
+    var phoneNumber: String
+    var password: String
 }

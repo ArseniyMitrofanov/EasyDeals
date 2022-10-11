@@ -3,5 +3,6 @@
 
 target 'EasyDeals' do
 pod 'SideMenu'
+pod 'KeychainSwift'
 
 end

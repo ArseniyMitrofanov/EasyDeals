@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
-class AuthorizationPageViewController: UIViewController {
+class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
+    
+    let keyChain = KeychainSwift()
 
     let verticalStackView: UIStackView = {
         let stackView = UIStackView()
@@ -36,10 +39,11 @@ class AuthorizationPageViewController: UIViewController {
         textField.isSecureTextEntry = true
         return textField
     }()
-    let buttonShowSignInPageVC: UIButton = {
+    lazy var buttonShowSignInPageVC: UIButton = {
         let button = UIButton()
         button.setTitle("Создать аккаунт", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(showCreateAccountVC), for: .touchUpInside)
         return button
     }()
     lazy var buttonShowHomePageVC: UIButton = {
@@ -49,13 +53,14 @@ class AuthorizationPageViewController: UIViewController {
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
         return button
     }()
     lazy var buttonForgotPassword: UIButton = {
         let button = UIButton()
         button.setTitle("Забыли пароль?", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(showSignInPageVC), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showForgotPasswordVC), for: .touchUpInside)
         return button
     }()
     
@@ -63,6 +68,8 @@ class AuthorizationPageViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         makeConstraints()
+        txtFieldPhoneNumber.delegate = self
+        txtFieldPassword.delegate = self
     }
     
     func addSubviews() {
@@ -96,13 +103,29 @@ class AuthorizationPageViewController: UIViewController {
             present(navVC, animated: true)
         }
     }
-    @objc func showSignInPageVC(_ button: UIButton) {
+    @objc func showCreateAccountVC(_ button: UIButton) {
         if button == button {
-            let vc = SignInPageViewController()
+            let vc = CreateAccountViewController()
             vc.view.backgroundColor = .systemBackground
             let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
             navigationItem.backBarButtonItem = backBarButtonItem
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    @objc func showForgotPasswordVC(_ button: UIButton) {
+        if button == button {
+            let vc = ForgotPasswordViewController()
+            vc.view.backgroundColor = .systemBackground
+            let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
+            navigationItem.backBarButtonItem = backBarButtonItem
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let keyChainPhoneNumber = keyChain.get("phoneNumber"),
+              let keyChainPassword = keyChain.get("password") else {return}
+        if txtFieldPhoneNumber.text == keyChainPhoneNumber && txtFieldPassword.text == keyChainPassword {
+            buttonShowHomePageVC.isUserInteractionEnabled = true
         }
     }
 }
