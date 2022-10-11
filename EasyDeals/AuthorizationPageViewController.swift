@@ -109,7 +109,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
             vc.view.backgroundColor = .systemBackground
             let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
             navigationItem.backBarButtonItem = backBarButtonItem
-            navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: false)
         }
     }
     @objc func showForgotPasswordVC(_ button: UIButton) {
@@ -118,7 +118,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
             vc.view.backgroundColor = .systemBackground
             let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
             navigationItem.backBarButtonItem = backBarButtonItem
-            navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: false)
         }
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
