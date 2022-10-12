@@ -53,7 +53,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
-        button.isUserInteractionEnabled = false
+        button.isUserInteractionEnabled = true
         return button
     }()
     lazy var buttonForgotPassword: UIButton = {
