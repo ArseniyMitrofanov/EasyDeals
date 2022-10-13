@@ -99,7 +99,4 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             present(navVC, animated: true)
         }
     }
-    
-
 }
-
