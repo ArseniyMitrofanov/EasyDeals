@@ -73,13 +73,13 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addSubviews() {
+        self.view.addSubview(verticalStackView)
         verticalStackView.addArrangedSubview(userImage)
         verticalStackView.addArrangedSubview(txtFieldPhoneNumber)
         verticalStackView.addArrangedSubview(txtFieldPassword)
         verticalStackView.addArrangedSubview(buttonShowHomePageVC)
         verticalStackView.addArrangedSubview(buttonForgotPassword)
         verticalStackView.addArrangedSubview(buttonShowSignInPageVC)
-        self.view.addSubview(verticalStackView)
     }
     func makeConstraints() {
         NSLayoutConstraint.activate([

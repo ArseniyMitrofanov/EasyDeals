@@ -16,7 +16,7 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationItemSetUp()
-
+        
     }
     func navigationItemSetUp() {
         title = "Главная"
@@ -43,7 +43,8 @@ extension HomePageViewController: MenuViewControllerDelegate {
     func didSelect(menuItem: MenuViewController.MenuOptions) {
         switch menuItem {
         case .profile:
-            print("hello")
+            showUserProfileVC()
+            break
         case .info:
             break
         case .appRating:
@@ -59,5 +60,13 @@ extension HomePageViewController: MenuViewControllerDelegate {
     func exit() {
         self.dismiss(animated: true)
         dismiss(animated: true)
+    }
+    func showUserProfileVC() {
+        self.dismiss(animated: true)
+        let vc = UserProfileViewController()
+        vc.view.backgroundColor = .systemBackground
+        let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtonItem
+        navigationController?.pushViewController(vc, animated: false)
     }
 }

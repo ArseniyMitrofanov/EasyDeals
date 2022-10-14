@@ -26,10 +26,29 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
     let txtFieldPhoneNumber: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.placeholder = "Номер телефона:"
+        return textField
+    }()
+    let txtFieldName: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Имя:"
+        return textField
+    }()
+    let txtFieldSurname: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Фамилия:"
+        return textField
+    }()
+    let txtFieldBirthday: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Дата рождения:"
         return textField
     }()
     let txtFieldPassword: UITextField = {
@@ -61,6 +80,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         addSubviews()
         makeConstraints()
+        txtFieldName.delegate = self
+        txtFieldSurname.delegate = self
+        txtFieldBirthday.delegate = self
         txtFieldPhoneNumber.delegate = self
         txtFieldPassword.delegate = self
         txtFieldRepeatPassword.delegate = self
@@ -68,6 +90,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     func addSubviews() {
         verticalStackView.addArrangedSubview(userImage)
+        verticalStackView.addArrangedSubview(txtFieldName)
+        verticalStackView.addArrangedSubview(txtFieldSurname)
+        verticalStackView.addArrangedSubview(txtFieldBirthday)
         verticalStackView.addArrangedSubview(txtFieldPhoneNumber)
         verticalStackView.addArrangedSubview(txtFieldPassword)
         verticalStackView.addArrangedSubview(txtFieldRepeatPassword)
@@ -82,6 +107,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             userImage.widthAnchor.constraint(equalTo: userImage.heightAnchor),
             userImage.widthAnchor.constraint(equalToConstant: 150),
             txtFieldPhoneNumber.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            txtFieldName.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            txtFieldSurname.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
+            txtFieldBirthday.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             txtFieldPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             txtFieldRepeatPassword.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
             buttonShowHomePageVC.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor),
@@ -125,6 +153,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         if validateFields() == nil {
             buttonShowHomePageVC.isUserInteractionEnabled = true
         }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.placeholder = textField.text
+        UserDefaults.standard.set(textField.text, forKey: "userName")
+        view.endEditing(true)
+        return true
     }
 }
 

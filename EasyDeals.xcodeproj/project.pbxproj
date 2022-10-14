@@ -12,6 +12,7 @@
 		7217E2B928F5C0BE007933F5 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7217E2B828F5C0BE007933F5 /* CreateAccountViewController.swift */; };
 		9C2FDF687B560223B31579A5 /* libPods-EasyDeals.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15817A416918AAE75875692E /* libPods-EasyDeals.a */; };
 		EA6C11FC28F4038F00C7803C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C11FB28F4038F00C7803C /* ForgotPasswordViewController.swift */; };
+		EAB36CDD28F7187900B846E5 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB36CDC28F7187900B846E5 /* UserProfileViewController.swift */; };
 		EAD2647228B8046F0066F0D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2647128B8046F0066F0D0 /* AppDelegate.swift */; };
 		EAD2647428B8046F0066F0D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD2647328B8046F0066F0D0 /* SceneDelegate.swift */; };
 		EAD2647928B8046F0066F0D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD2647728B8046F0066F0D0 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		7217E2B828F5C0BE007933F5 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		8C11D8D8F27CB8BC20D2C3CD /* Pods-EasyDeals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyDeals.debug.xcconfig"; path = "Target Support Files/Pods-EasyDeals/Pods-EasyDeals.debug.xcconfig"; sourceTree = "<group>"; };
 		EA6C11FB28F4038F00C7803C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		EAB36CDC28F7187900B846E5 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		EAD2646E28B8046F0066F0D0 /* EasyDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD2647128B8046F0066F0D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAD2647328B8046F0066F0D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,9 +93,10 @@
 				EAD2647128B8046F0066F0D0 /* AppDelegate.swift */,
 				EAD2647328B8046F0066F0D0 /* SceneDelegate.swift */,
 				EAD2648528BBD49A0066F0D0 /* AuthorizationPageViewController.swift */,
-				7217E2B828F5C0BE007933F5 /* CreateAccountViewController.swift */,
 				EA6C11FB28F4038F00C7803C /* ForgotPasswordViewController.swift */,
+				7217E2B828F5C0BE007933F5 /* CreateAccountViewController.swift */,
 				7217E27028F306FE007933F5 /* HomePageViewController.swift */,
+				EAB36CDC28F7187900B846E5 /* UserProfileViewController.swift */,
 				7217E29428F31C88007933F5 /* MenuViewController.swift */,
 				EAD2647728B8046F0066F0D0 /* Main.storyboard */,
 				EAD2647A28B804700066F0D0 /* Assets.xcassets */,
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7217E2B928F5C0BE007933F5 /* CreateAccountViewController.swift in Sources */,
+				EAB36CDD28F7187900B846E5 /* UserProfileViewController.swift in Sources */,
 				7217E27128F306FE007933F5 /* HomePageViewController.swift in Sources */,
 				7217E29528F31C88007933F5 /* MenuViewController.swift in Sources */,
 				EAD2648628BBD49A0066F0D0 /* AuthorizationPageViewController.swift in Sources */,
