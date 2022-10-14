@@ -53,7 +53,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
-        button.isUserInteractionEnabled = true
+        button.isUserInteractionEnabled = false
         return button
     }()
     lazy var buttonForgotPassword: UIButton = {
@@ -122,9 +122,8 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
         }
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let keyChainPhoneNumber = keyChain.get("phoneNumber"),
-              let keyChainPassword = keyChain.get("password") else {return}
-        if txtFieldPhoneNumber.text == keyChainPhoneNumber && txtFieldPassword.text == keyChainPassword {
+        guard let keyChainPassword = keyChain.get(txtFieldPhoneNumber.text ?? "") else {return}
+        if txtFieldPassword.text == keyChainPassword {
             buttonShowHomePageVC.isUserInteractionEnabled = true
         }
     }

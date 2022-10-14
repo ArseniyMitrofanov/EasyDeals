@@ -118,8 +118,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @objc func showHomePageVC(_ button: UIButton) {
         if button == button {
             let loginInfo = LoginInformation(phoneNumber: txtFieldPhoneNumber.text ?? "", password: txtFieldPassword.text ?? "")
-            keyChain.set(loginInfo.phoneNumber, forKey: "phoneNumber")
-            keyChain.set(loginInfo.password, forKey: "password")
+            if keyChain.get(loginInfo.phoneNumber) != nil {
+                print("This phone number is already in use")
+            } else {
+                keyChain.set(loginInfo.password, forKey: loginInfo.phoneNumber)
+            }
             let vc = HomePageViewController()
             let navVC = UINavigationController(rootViewController: vc)
             navVC.modalPresentationStyle = .fullScreen
@@ -134,9 +137,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             return "Length of your phone number or password is not enough"
         }
         
-//        if isPasswordValid(cleanedPassword) == false {
-//            return "Please make sure your password is at least 8 characters, contains a special character and a number."
-//        }
+        if isPasswordValid(cleanedPassword) == false {
+            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+        }
         
         if txtFieldPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) !=
             txtFieldRepeatPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
@@ -145,10 +148,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         return nil
     }
     
-//    func isPasswordValid(_ password : String) -> Bool {
-//        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
-//        return passwordTest.evaluate(with: password)
-//    }
+    func isPasswordValid(_ password : String) -> Bool {
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if validateFields() == nil {
             buttonShowHomePageVC.isUserInteractionEnabled = true
