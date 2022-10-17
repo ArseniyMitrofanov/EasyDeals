@@ -53,7 +53,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(showHomePageVC), for: .touchUpInside)
-        button.isUserInteractionEnabled = false
+//        button.isUserInteractionEnabled = false
         return button
     }()
     lazy var buttonForgotPassword: UIButton = {
@@ -96,6 +96,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
         ])
     }
     @objc func showHomePageVC(_ button: UIButton) {
+        self.dismiss(animated: true)
         if button == button {
             let vc = HomePageViewController()
             let navVC = UINavigationController(rootViewController: vc)
@@ -106,7 +107,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
     @objc func showCreateAccountVC(_ button: UIButton) {
         if button == button {
             let vc = CreateAccountViewController()
-            vc.view.backgroundColor = .systemBackground
+            vc.view.backgroundColor = .white
             let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
             navigationItem.backBarButtonItem = backBarButtonItem
             navigationController?.pushViewController(vc, animated: false)
@@ -115,7 +116,7 @@ class AuthorizationPageViewController: UIViewController, UITextFieldDelegate {
     @objc func showForgotPasswordVC(_ button: UIButton) {
         if button == button {
             let vc = ForgotPasswordViewController()
-            vc.view.backgroundColor = .systemBackground
+            vc.view.backgroundColor = .white
             let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
             navigationItem.backBarButtonItem = backBarButtonItem
             navigationController?.pushViewController(vc, animated: false)

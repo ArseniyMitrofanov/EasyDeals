@@ -1,20 +1,28 @@
 PODS:
+  - GoogleMaps (7.1.0):
+    - GoogleMaps/Maps (= 7.1.0)
+  - GoogleMaps/Base (7.1.0)
+  - GoogleMaps/Maps (7.1.0):
+    - GoogleMaps/Base
   - KeychainSwift (20.0.0)
   - SideMenu (6.5.0)
 
 DEPENDENCIES:
+  - GoogleMaps
   - KeychainSwift
   - SideMenu
 
 SPEC REPOS:
   trunk:
+    - GoogleMaps
     - KeychainSwift
     - SideMenu
 
 SPEC CHECKSUMS:
+  GoogleMaps: bc56ffb0324e345a2d91bac1a64a920f9c8f1b20
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: e71e9e0763726cf7fa185f5223e93ec4cbdf8dbe
+PODFILE CHECKSUM: 6eea760558b2c4036c4053b0924763bc36eacc03
 
 COCOAPODS: 1.11.3

@@ -7,24 +7,61 @@
 
 import UIKit
 import SideMenu
+import GoogleMaps
+import CoreLocation
+    
+class HomePageViewController: UIViewController, CLLocationManagerDelegate {
 
-class HomePageViewController: UIViewController {
-    
+    let mapView: GMSMapView = {
+        let mapView = GMSMapView()
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        return mapView
+    }()
+    let locationManager: CLLocationManager = {
+        var locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        return locationManager
+    }()
     var menu: SideMenuNavigationController?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        locationManager.delegate = self
+        view.backgroundColor = .white
+        view.addSubview(mapView)
         navigationItemSetUp()
-        
+        makeConstraints()
     }
+    
     func navigationItemSetUp() {
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         title = "Главная"
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "list.dash"),
             style: .done,
             target: self,
             action: #selector(didTapMenuButton))
+    }
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            mapView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+        ])
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {return}
+        let coordinate = location.coordinate
+        let camera = GMSCameraPosition.camera(withLatitude: coordinate.latitude, longitude: coordinate.longitude, zoom: 6.0)
+        mapView.camera = camera
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+//        marker.title = "Sydney"
+//        marker.snippet = "Australia"
+        marker.map = mapView
     }
     @objc func didTapMenuButton() {
         let menuVC = MenuViewController()
@@ -44,7 +81,6 @@ extension HomePageViewController: MenuViewControllerDelegate {
         switch menuItem {
         case .profile:
             showUserProfileVC()
-            break
         case .info:
             break
         case .appRating:
@@ -54,7 +90,7 @@ extension HomePageViewController: MenuViewControllerDelegate {
         case .setting:
             break
         case .exit:
-            self.exit()
+            exit()
         }
     }
     func exit() {
@@ -64,9 +100,13 @@ extension HomePageViewController: MenuViewControllerDelegate {
     func showUserProfileVC() {
         self.dismiss(animated: true)
         let vc = UserProfileViewController()
-        vc.view.backgroundColor = .systemBackground
+        vc.view.backgroundColor = .white
         let backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButtonItem
         navigationController?.pushViewController(vc, animated: false)
     }
 }
+    
+    //MARK: - GoogleMapsLicense
+    //обязательно включить это в раздел "Информация"
+    //        print(GMSServices.openSourceLicenseInfo())

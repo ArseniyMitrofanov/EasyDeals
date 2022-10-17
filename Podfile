@@ -4,5 +4,6 @@
 target 'EasyDeals' do
 pod 'SideMenu'
 pod 'KeychainSwift'
+pod 'GoogleMaps'
 
 end

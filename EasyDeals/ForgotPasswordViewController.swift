@@ -26,6 +26,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     let tempInfoLabel: UILabel = {
         let label = UILabel()
         label.text = "//Здесь мы напишем что выслали код подтверждения на почту/телефон с указанием этой почты/телефона (siuuuuuuuuuuuuuuuuuuuuu)"
+        label.textColor = .black
         label.numberOfLines = 3
         return label
     }()

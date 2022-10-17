@@ -43,6 +43,7 @@ class UserProfileViewController: UIViewController {
         label.text = "Арсений"
         label.numberOfLines = 2
         label.textAlignment = .left
+        label.textColor = .black
         label.font = .systemFont(ofSize: 25)
         return label
     }()
@@ -51,6 +52,7 @@ class UserProfileViewController: UIViewController {
         label.text = "Митрофанов"
         label.numberOfLines = 2
         label.textAlignment = .left
+        label.textColor = .black
         label.font = .systemFont(ofSize: 25)
         return label
     }()
@@ -59,6 +61,7 @@ class UserProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "05.04.2004"
         label.textAlignment = .left
+        label.textColor = .black
         label.font = .systemFont(ofSize: 18)
         return label
     }()
@@ -66,6 +69,7 @@ class UserProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "+375291697223"
         label.textAlignment = .left
+        label.textColor = .black
         label.font = .systemFont(ofSize: 18)
         return label
     }()
@@ -74,8 +78,10 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
         addSubviews()
         makeConstraints()
+        title = "Профиль"
     }
     func addSubviews() {
         self.view.addSubview(verticalStackView)
